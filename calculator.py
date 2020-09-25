@@ -1,5 +1,5 @@
 while True:
-    option = input("Enter add or subtract multiply divide quit :  ")
+    option = input("Enter the string 'add' or 'subtract' or 'multiply' or 'divide' or 'quit' :  ")
     if option == 'quit':
         break
     elif option == 'add':
