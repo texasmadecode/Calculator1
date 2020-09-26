@@ -1,20 +1,26 @@
+print("Simple Calculator")
+print("1.Add")
+print("2.Substract")
+print("3.Multiply")
+print("4.Divide")
+print("5.Quit")
 while True:
-    option = input("Enter the string 'add' or 'subtract' or 'multiply' or 'divide' or 'quit' :  ")
-    if option == 'quit':
+    option = int(input("Enter the number:  "))
+    if option == 5:
         break
-    elif option == 'add':
+    elif option == 1:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 + number2)
-    elif option == 'subtract':
+    elif option == 2:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 - number2)
-    elif option == 'multiply':
+    elif option == 3:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 * number2)
-    elif option == 'divide':
+    elif option == 4:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 / number2)
