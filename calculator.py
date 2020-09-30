@@ -3,6 +3,7 @@ print("1.Add")
 print("2.Substract")
 print("3.Multiply")
 print("4.Divide")
+print("5.Perentage")
 print("5.Quit")
 while True:
     option = int(input("Enter the number:  "))
