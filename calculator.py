@@ -6,10 +6,11 @@ print("4.Divide")
 print("5.Square")
 print("6.Power")
 print("7.Square Root")
-print("8.Quit")
+print("8.Odd/Even")
+print("9.Quit")
 while True:
     option = int(input("Enter a number to excute operation:  "))
-    if option == 8:
+    if option == 9:
         break
     elif option == 1:
         number1 = float(input("Enter first number: "))
@@ -37,6 +38,12 @@ while True:
     elif option == 7:
         number1 = float(input("Enter a number: "))
         print(number1 ** 0.5)
+    elif option == 8:
+        number1 = float(input("Enter a number: "))
+        if number1%2==0:
+            print("Even")
+        else:
+            print("Odd")
     else : 
         print("Invalid Input")
 print("EXIT")
