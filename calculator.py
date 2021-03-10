@@ -1,3 +1,5 @@
+import math
+
 print("Simple Calculator")
 print("1.Add")
 print("2.Substract")
@@ -8,43 +10,55 @@ print("6.Power")
 print("7.Square Root")
 print("8.Odd/Even")
 print("9.Check if Prime")
-print("10.Quit")
+print("10.Log")
+print("11.Quit")
+
 while True:
     option = int(input("Enter a number to excute operation:  "))
-    if option == 10:
+
+    if option == 11:
         break
+
     elif option == 1:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 + number2)
+    
     elif option == 2:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 - number2)
+   
     elif option == 3:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 * number2)
+    
     elif option == 4:
         number1 = float(input("Enter first number: "))
         number2 = float(input("Enter second number: "))
         print(number1 / number2)
+    
     elif option == 5:
         number1 = float(input("Enter a number: "))
         print(number1**2)
+    
     elif option == 6:
         number1 = float(input("Enter the number to find its value: "))
         number2 = float(input("Enter a value of power: "))
         print(number1 ** number2)
+    
     elif option == 7:
         number1 = float(input("Enter a number: "))
         print(number1 ** 0.5)
+    
     elif option == 8:
         number1 = float(input("Enter a number: "))
         if number1%2==0:
             print("Even")
         else:
             print("Odd")
+    
     elif option == 9:
         def prime_no(n) :
             if (n <= 1) :
@@ -68,7 +82,13 @@ while True:
         else:
             print("And the number {} is not a Prime Number.".format(number))
 
+    elif option == 10:
+        base = float(input("\nEnter logarithm base: "))
+        x    = float(input("Enter number to calculate: "))
+        log  = math.log(x, base)
+        print(f"\nLog {base} ({x}) = {log:.2f}\n")
 
     else :
         print("Invalid Input")
+
 print("EXIT")
