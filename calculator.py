@@ -1,94 +1,106 @@
 import math
 
-print("Simple Calculator")
-print("1.Add")
-print("2.Substract")
-print("3.Multiply")
-print("4.Divide")
-print("5.Square")
-print("6.Power")
-print("7.Square Root")
-print("8.Odd/Even")
-print("9.Check if Prime")
-print("10.Log")
-print("11.Quit")
+def add(a, b):
+    return a + b
 
-while True:
-    option = int(input("Enter a number to excute operation:  "))
+def subtract(a, b):
+    return a - b
 
-    if option == 11:
-        break
+def multiply(a, b):
+    return a * b
 
-    elif option == 1:
-        number1 = float(input("Enter first number: "))
-        number2 = float(input("Enter second number: "))
-        print(number1 + number2)
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero"
+    return a / b
+
+def square(a):
+    return a ** 2
+
+def power(a, b):
+    return math.pow(a, b)
+
+def square_root(a):
+    if a < 0:
+        return "Error: Cannot compute square root of a negative number"
+    return math.sqrt(a)
+
+def is_even(a):
+    return "Even" if a % 2 == 0 else "Odd"
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def log(base, x):
+    if base <= 0 or base == 1:
+        return "Error: Log base must be greater than 0 and not equal to 1"
+    if x <= 0:
+        return "Error: Logarithm argument must be positive"
+    return math.log(x, base)
+
+def main():
+    operations = {
+        1: ("Add", add),
+        2: ("Subtract", subtract),
+        3: ("Multiply", multiply),
+        4: ("Divide", divide),
+        5: ("Square", square),
+        6: ("Power", power),
+        7: ("Square Root", square_root),
+        8: ("Odd/Even", is_even),
+        9: ("Check if Prime", is_prime),
+        10: ("Log", log)
+    }
     
-    elif option == 2:
-        number1 = float(input("Enter first number: "))
-        number2 = float(input("Enter second number: "))
-        print(number1 - number2)
-   
-    elif option == 3:
-        number1 = float(input("Enter first number: "))
-        number2 = float(input("Enter second number: "))
-        print(number1 * number2)
-    
-    elif option == 4:
-        number1 = float(input("Enter first number: "))
-        number2 = float(input("Enter second number: "))
-        print(number1 / number2)
-    
-    elif option == 5:
-        number1 = float(input("Enter a number: "))
-        print(number1**2)
-    
-    elif option == 6:
-        number1 = float(input("Enter the number to find its value: "))
-        number2 = float(input("Enter a value of power: "))
-        print(number1 ** number2)
-    
-    elif option == 7:
-        number1 = float(input("Enter a number: "))
-        print(number1 ** 0.5)
-    
-    elif option == 8:
-        number1 = float(input("Enter a number: "))
-        if number1%2==0:
-            print("Even")
-        else:
-            print("Odd")
-    
-    elif option == 9:
-        def prime_no(n) :
-            if (n <= 1) :
-                return False
-            if (n <= 3) :
-                return True
-            if (n % 2 == 0 or n % 3 == 0) :
-                return False
-            temp = 5
-            while(temp * temp <= n) :
-                if (n % temp == 0 or n % (temp + 2) == 0) :
-                    return False
-                temp = temp + 6
+    while True:
+        print("\nSimple Calculator")
+        for key, (name, _) in operations.items():
+            print(f"{key}. {name}")
+        print("11. Quit")
 
-            return True
-        number = int(input("Enter a number to check if it is a prime no: "))
-        print("You entered {}.".format(number))
+        try:
+            option = int(input("Enter a number to execute operation: "))
+            if option == 11:
+                break
 
-        if prime_no(number):
-            print("And the number {} is a Prime Number".format(number))
-        else:
-            print("And the number {} is not a Prime Number.".format(number))
+            if option in operations:
+                operation_name, operation_func = operations[option]
+                
+                if option in {1, 2, 3, 4, 6}:  # Two-operand operations
+                    number1 = float(input("Enter first number: "))
+                    number2 = float(input("Enter second number: "))
+                    result = operation_func(number1, number2)
+                elif option in {5, 7, 8}:  # Single-operand operations
+                    number = float(input("Enter a number: "))
+                    result = operation_func(number)
+                elif option == 9:
+                    number = int(input("Enter a number to check if it is prime: "))
+                    result = "Prime" if operation_func(number) else "Not Prime"
+                elif option == 10:
+                    base = float(input("Enter logarithm base: "))
+                    x = float(input("Enter number to calculate: "))
+                    result = operation_func(base, x)
+                
+                print(f"Result: {result}")
+            else:
+                print("Invalid Input")
+        except ValueError:
+            print("Error: Invalid input. Please enter a valid number.")
+        except Exception as e:
+            print(f"Error: {e}")
+    
+    print("EXIT")
 
-    elif option == 10:
-        base = float(input("\nEnter logarithm base: "))
-        x    = float(input("Enter number to calculate: "))
-        log  = math.log(x, base)
-        print(f"\nLog {base} ({x}) = {log:.2f}\n")
-
-    else :
-        print("Invalid Input")
-
-print("EXIT")
+if __name__ == "__main__":
+    main()
